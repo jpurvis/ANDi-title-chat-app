@@ -1,26 +1,79 @@
 <!DOCTYPE html>
 <html>
+  <title>AND Title App</title>
+  <script>
+    function validateEmail(email) {
+      var re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    }
 
-<script>
-function doSomething() {
-  var email = "mailto:" + document.getElementById('email').value + '?subject=My AND Title&body=' + document.getElementById('andtitle').value;
-    window.location.href = email;
-    return false;
-}
-</script>
+    function mailTo(email) {
+      var mailTo =
+        "mailto:" +
+        email +
+        "?subject=My AND Title&body=" +
+        "Just thought you should know that my AND title is " + document.getElementById("andtitle").value;
+      window.location.href = mailTo;
+    }
 
-<body>
+    function submitTitle() {
+      var email = document.getElementById("email").value;
+      var title = document.getElementById("andtitle").value;
+      if (email == "" || title == "") {
+        alert(
+          "You need to enter your title and the email address of the person you're sending your title to."
+        );
+      } else if (!validateEmail(email)) {
+        alert("You haven't entered a valid email.");
+      } else {
+        mailTo(email);
+      }
 
-<h2>Share my AND title</h2>
+      return false;
+    }
 
-<form action="/action_page.php">
-  <label for="fname">My AND title:</label><br>
-  <input type="text" id="andtitle" name="andtitle" value=""><br>
-  <label for="lname">I want to send it to:</label><br>
-  <input type="text" id="email" name="email" value=""><br><br>
-  <input type="button" onclick="doSomething()" value="Send">
-</form> 
+    function submitTitleToGlasgow() {
+      mailTo("everyone_uk@and.digital");
+    }
 
-</body>
+    function submitTitleToAll() {
+      mailTo("everyone_uk@and.digital");
+    }
+  </script>
+
+  <body>
+    <div align="center">
+      <img
+        width="150"
+        src="https://app.jobvite.com/logo/3522_ANDLOGORGBONWHITE_1493728768591_Company.png"
+      />
+      <h2>Title Sharing App</h2>
+
+      <form action="/action_page.php">
+        <label for="andtitle" class="for-label">My AND title:</label><br />
+        <input type="text" id="andtitle" name="andtitle" value="" /><br /><br />
+        <label for="email">I want to send it to:</label><br />
+        <input type="text" id="email" name="email" value="" /><br />
+        <label for="andtitle" class="for-label">Or:</label><br />
+        <select name="auto-email" id="auto-email">
+          <option value="none">Choose an existing email</option>
+          <option value="ruth">ruth.mcdonald@and.digital</option>
+          <option value="james">james.purvis@and.digital</option>
+          <option value="wai">wai.law@and.digital</option>
+          <option value="ruella">ruella.vas@and.digital</option> </select
+        ><br /><br /><br />
+        <input type="button" onclick="submitTitle()" value="Send" /><br /></br>
+        <input
+          type="button"
+          onclick="submitTitleToGlasgow()"
+          value="Send to everyone in Glasgow"
+        /><br /><br />
+        <input
+          type="button"
+          onclick="submitTitleToAll()"
+          value="Send to everyone in AND"
+        />
+      </form>
+    </div>
+  </body>
 </html>
-
