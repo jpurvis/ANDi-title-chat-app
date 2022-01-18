@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+function doSomething() {
+  var email = "mailto:" + document.getElementById('email').value + '?subject=My AND Title&body=' + document.getElementById('andtitle').value;
+    window.location.href = email;
+    return false;
+}
+</script>
+
+<body>
+
+<h2>Share my AND title</h2>
+
+<form action="/action_page.php">
+  <label for="fname">My AND title:</label><br>
+  <input type="text" id="andtitle" name="andtitle" value=""><br>
+  <label for="lname">I want to send it to:</label><br>
+  <input type="text" id="email" name="email" value=""><br><br>
+  <input type="button" onclick="doSomething()" value="Send">
+</form> 
+
+</body>
+</html>
+
